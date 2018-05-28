@@ -8,10 +8,8 @@ import com.amazon.ask.model.Slot;
 
 import java.util.Optional;
 
-import static com.amazon.ask.request.Predicates.intentName;
 import static com.amazon.ask.request.Predicates.sessionAttribute;
 import static com.namumu.alexa.oneliner.util.Attributes.STATE_KEY;
-import static com.namumu.alexa.oneliner.util.CustomIntent.SAY_JOKE_INTENT;
 import static com.namumu.alexa.oneliner.util.CustomState.SAY_JOKE_STATE;
 import static com.namumu.alexa.oneliner.util.Slots.JOKE;
 
@@ -26,9 +24,10 @@ public class SayJokeIntentHandler implements RequestHandler {
     public Optional<Response> handle(HandlerInput input) {
         IntentRequest intentRequest = (IntentRequest) input.getRequestEnvelope().getRequest();
         Slot jokeSlot = intentRequest.getIntent().getSlots().get(JOKE.getValue());
-        String speechText = "Your joke was " + jokeSlot.getValue();
+        String speechText = "Your joke was.<prosody pitch=\"x-high\">" + jokeSlot.getValue() + "</prosody>." + "Would you like to submit your joke?";
         return input.getResponseBuilder()
                 .withSpeech(speechText)
+                .withShouldEndSession(false)
                 .build();
     }
 }

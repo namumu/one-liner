@@ -7,13 +7,11 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazonaws.util.StringUtils;
 import com.namumu.alexa.oneliner.util.Attributes;
-import com.namumu.alexa.oneliner.util.CustomIntent;
 import com.namumu.alexa.oneliner.util.CustomState;
 
 import java.util.Map;
 import java.util.Optional;
 
-import static com.amazon.ask.request.Predicates.intentName;
 import static com.amazon.ask.request.Predicates.sessionAttribute;
 import static com.namumu.alexa.oneliner.util.Attributes.STATE_KEY;
 import static com.namumu.alexa.oneliner.util.CustomState.SAY_AUTHOR_NAME_STATE;
